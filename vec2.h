@@ -8,6 +8,10 @@ namespace kletch {
 template <typename T>
 struct vec2
 {
+    static const vec2 ZERO;
+    static const vec2 UNIT_X;
+    static const vec2 UNIT_Y;
+
     T x;
     T y;
 
@@ -31,6 +35,15 @@ struct vec2
 
 typedef vec2<float> vec2f;
 typedef vec2<real> vec2r;
+
+template <typename T>
+const vec2<T> vec2<T>::ZERO = vec2<T>(0, 0);
+
+template <typename T>
+const vec2<T> vec2<T>::UNIT_X = vec2<T>(1, 0);
+
+template <typename T>
+const vec2<T> vec2<T>::UNIT_Y = vec2<T>(0, 1);
 
 template <typename T>
 inline vec2<T> operator - (vec2<T> u, const vec2<T>& v) { return u -= v; }
