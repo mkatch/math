@@ -1,6 +1,7 @@
 #ifndef KLETCH_MATH_PREFIX_H
 #define KLETCH_MATH_PREFIX_H
 
+#include <iostream>
 #include "special_functions.h"
 
 namespace kletch {
