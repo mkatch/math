@@ -15,6 +15,8 @@ struct vec2
     T x;
     T y;
 
+    vec2() { }
+
     vec2(T x, T y) : x(x), y(y) { }
 
     vec2(T v) : vec2(v, v) { }
