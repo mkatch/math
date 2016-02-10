@@ -2,6 +2,7 @@
 #define KLETCH_MATH_VEC2_H
 
 #include "prefix.h"
+#include <type_traits>
 
 namespace kletch {
 
@@ -17,23 +18,65 @@ struct vec2
 
     vec2() { }
 
-    vec2(T x, T y) : x(x), y(y) { }
+    template <typename X, typename Y>
+    vec2(X x, Y y) : x(x), y(y) { }
 
-    vec2(T v) : vec2(v, v) { }
+    template <typename S>
+    vec2(S value) : vec2(value, value) { }
 
-    const vec2& operator += (const vec2& v)
+    template <typename S>
+    vec2(const vec2<S>& v) : vec2(v.x, v.y) { }
+
+    template <typename S>
+    vec2& operator += (const vec2<S>& v)
     {
         x += v.x; y += v.y;
         return *this;
     }
 
-    const vec2& operator -= (const vec2& v)
+    template <typename S>
+    vec2& operator += (S s)
+    {
+        x += s; y += s;
+        return *this;
+    }
+
+    template <typename S>
+    vec2& operator -= (const vec2<S>& v)
     {
         x -= v.x; y -= v.y;
         return *this;
     }
 
-    const vec2& operator /= (T s)
+    template <typename S>
+    vec2& operator -= (S s)
+    {
+        x -= s; y -= s;
+        return *this;
+    }
+
+    template <typename S>
+    vec2& operator *= (S s)
+    {
+        x *= s; y *= s;
+        return *this;
+    }
+
+    template <typename S>
+    vec2& operator *= (const vec2<S>& v)
+    {
+        x *= v.x; y *= v.y;
+        return *this;
+    }
+
+    template <typename S>
+    vec2& operator /= (const vec2<S>& v)
+    {
+        x /= v.x, y /= v.y;
+        return *this;
+    }
+
+    vec2& operator /= (T s)
     {
         x /= s; y /= s;
         return *this;
@@ -56,14 +99,101 @@ const vec2<T> vec2<T>::UNIT_X = vec2<T>(1, 0);
 template <typename T>
 const vec2<T> vec2<T>::UNIT_Y = vec2<T>(0, 1);
 
-template <typename T>
-inline vec2<T> operator + (vec2<T> u, const vec2<T>& v) { return u += v; }
+template <typename T1, typename T2>
+inline vec2<typename std::common_type<T1, T2>::type> operator + (
+    const vec2<T1>& u,
+    const vec2<T2>& v
+)
+{
+    vec2<typename std::common_type<T1, T2>::type> c = u;
+    return c += v;
+}
 
-template <typename T>
-inline vec2<T> operator - (vec2<T> u, const vec2<T>& v) { return u -= v; }
+template <typename T1, typename T2>
+inline vec2<typename std::common_type<T1, T2>::type> operator + (const vec2<T1>& u, T2 s)
+{
+    vec2<typename std::common_type<T1, T2>::type> c = u;
+    return c += s;
+}
 
-template <typename T>
-inline vec2<T> operator / (vec2<T> u, T s) { return u /= s; }
+template <typename T1, typename T2>
+inline vec2<typename std::common_type<T1, T2>::type> operator + (T1 s, const vec2<T2>& u)
+{
+    vec2<typename std::common_type<T1, T2>::type> c = u;
+    return c += s;
+}
+
+template <typename T1, typename T2>
+inline vec2<typename std::common_type<T1, T2>::type> operator - (
+    const vec2<T1>& u,
+    const vec2<T2>& v
+)
+{
+    vec2<typename std::common_type<T1, T2>::type> c = u;
+    return c -= v;
+}
+
+template <typename T1, typename T2>
+inline vec2<typename std::common_type<T1, T2>::type> operator - (const vec2<T1>& u, T2 s)
+{
+    vec2<typename std::common_type<T1, T2>::type> c = u;
+    return c -= s;
+}
+
+template <typename T1, typename T2>
+inline vec2<typename std::common_type<T1, T2>::type> operator - (T1 s, const vec2<T2>& u)
+{
+    vec2<typename std::common_type<T1, T2>::type> c = s;
+    return c -= u;
+}
+
+template <typename T1, typename T2>
+inline vec2<typename std::common_type<T1, T2>::type> operator * (const vec2<T1>& u, T2 s)
+{
+    vec2<typename std::common_type<T1, T2>::type> c = u;
+    return c *= s;
+}
+
+template <typename T1, typename T2>
+inline vec2<typename std::common_type<T1, T2>::type> operator * (T1 s, const vec2<T2>& u)
+{
+    vec2<typename std::common_type<T1, T2>::type> c = u;
+    return c *= s;
+}
+
+template <typename T1, typename T2>
+inline vec2<typename std::common_type<T1, T2>::type> operator * (
+    const vec2<T1>& u,
+    const vec2<T2>& v
+)
+{
+    vec2<typename std::common_type<T1, T2>::type> c = u;
+    return c *= v;
+}
+
+template <typename T1, typename T2>
+inline vec2<typename std::common_type<T1, T2>::type> operator / (const vec2<T1>& u, T2 s)
+{
+    vec2<typename std::common_type<T1, T2>::type> c = u;
+    return c /= s;
+}
+
+template <typename T1, typename T2>
+inline vec2<typename std::common_type<T1, T2>::type> operator / (T1 s, const vec2<T2>& u)
+{
+    vec2<typename std::common_type<T1, T2>::type> c = s;
+    return c /= u;
+}
+
+template <typename T1, typename T2>
+inline vec2<typename std::common_type<T1, T2>::type> operator / (
+    const vec2<T1>& u,
+    const vec2<T2>& v
+)
+{
+    vec2<typename std::common_type<T1, T2>::type> c = u;
+    return c /= v;
+}
 
 template <typename T>
 inline std::ostream& operator << (std::ostream& out, const vec2<T>& v)
