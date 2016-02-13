@@ -27,6 +27,13 @@ struct vec2
     template <typename S>
     vec2(const vec2<S>& v) : vec2(v.x, v.y) { }
 
+    T length_sq() const { return x * x + y * y; }
+
+    std::common_type<T, float> length() const
+    {
+        return sqrt(static_cast<std::common_type<T, float>>(length_sq()));
+    }
+
     template <typename S>
     vec2& operator += (const vec2<S>& v)
     {

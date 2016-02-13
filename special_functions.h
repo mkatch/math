@@ -12,6 +12,12 @@ using std::sin;
 using std::sqrt;
 
 template <typename T>
+inline T sq(T x)
+{
+    return x * x;
+}
+
+template <typename T>
 inline T lerp(T val0, T val1, T alpha)
 {
     return (static_cast<T>(1) - alpha) * val0 + alpha * val1;
