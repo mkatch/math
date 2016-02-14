@@ -29,9 +29,59 @@ struct vec2
 
     T length_sq() const { return x * x + y * y; }
 
-    std::common_type<T, float> length() const
+    typename std::common_type<T, float>::type length() const { return hypot(x, y); }
+
+    template <typename S>
+    vec2& operator = (const vec2<S>& v)
     {
-        return sqrt(static_cast<std::common_type<T, float>>(length_sq()));
+        x = v.x; y = v.y;
+        return *this;
+    }
+
+    void normalize() { operator /= (length()); }
+
+    void normalize_safe()
+    {
+        normalize();
+        if(any_broken())
+        {
+            x = 1;
+            y = 0;
+        }
+    }
+
+    vec2 normalized()
+    {
+        vec2 v = *this;
+        v.normalize();
+        return v;
+    }
+
+    vec2 normalized_safe()
+    {
+        vec2 v = *this;
+        v.normalize_safe();
+        return v;
+    }
+
+    typename std::common_type<T, float>::type angle() const { return atan2(y, x); }
+
+    bool any_nan() { return isnan(x) || isnan(y); }
+
+    bool any_inf() { return isinf(x) || isinf(y); }
+
+    bool any_broken() { return any_nan() || any_inf(); }
+
+    template <typename S>
+    bool operator == (const vec2<S>& v) const
+    {
+        return x == v.x && y == v.y;
+    }
+
+    template <typename S>
+    bool operator != (const vec2<S>& v) const
+    {
+        return x != v.x || y != v.y;
     }
 
     template <typename S>
@@ -41,8 +91,7 @@ struct vec2
         return *this;
     }
 
-    template <typename S>
-    vec2& operator += (S s)
+    vec2& operator += (T s)
     {
         x += s; y += s;
         return *this;
@@ -55,15 +104,13 @@ struct vec2
         return *this;
     }
 
-    template <typename S>
-    vec2& operator -= (S s)
+    vec2& operator -= (T s)
     {
         x -= s; y -= s;
         return *this;
     }
 
-    template <typename S>
-    vec2& operator *= (S s)
+    vec2& operator *= (T s)
     {
         x *= s; y *= s;
         return *this;
@@ -206,6 +253,18 @@ template <typename T>
 inline std::ostream& operator << (std::ostream& out, const vec2<T>& v)
 {
     return out << '(' << v.x << ", " << v.y << ')';
+}
+
+template <typename T1, typename T2>
+inline typename std::common_type<T1, T2>::type dot(const vec2<T1>& u, const vec2<T2>& v)
+{
+    return u.x * v.x + u.y * v.y;
+}
+
+template <typename T1, typename T2>
+inline typename std::common_type<T1, T2>::type per(const vec2<T1>& u, const vec2<T2>& v)
+{
+    return u.x * v.y - u.y * v.x;
 }
 
 } // namespace kletch

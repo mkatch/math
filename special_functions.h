@@ -5,11 +5,15 @@
 
 namespace kletch {
 
+using std::isnan;
+using std::isinf;
+
 using std::abs;
 using std::copysign;
 using std::cos;
 using std::sin;
 using std::sqrt;
+using std::hypot;
 
 template <typename T>
 inline T sq(T x)
