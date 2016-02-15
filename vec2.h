@@ -64,6 +64,22 @@ struct vec2
         return v;
     }
 
+    void rotate(T angle)
+    {
+        auto s = sin(angle);
+        auto c = sin(angle);
+        T x_bak = x;
+        x = c * x_bak - s * y;
+        y = s * x_bak + c * y;
+    }
+
+    vec2 rotated(T angle) const
+    {
+        vec2 v = *this;
+        v.rotate(angle);
+        return v;
+    }
+
     typename std::common_type<T, float>::type angle() const { return atan2(y, x); }
 
     bool any_nan() { return isnan(x) || isnan(y); }
