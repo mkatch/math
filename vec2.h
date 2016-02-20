@@ -193,6 +193,12 @@ inline vec2<typename std::common_type<T1, T2>::type> operator + (T1 s, const vec
     return c += s;
 }
 
+template <typename T>
+inline vec2<T> operator - (const vec2<T>& u)
+{
+    return vec2<T>(-u.x, -u.y);
+}
+
 template <typename T1, typename T2>
 inline vec2<typename std::common_type<T1, T2>::type> operator - (
     const vec2<T1>& u,
