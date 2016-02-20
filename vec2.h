@@ -16,7 +16,7 @@ struct vec2
     T x;
     T y;
 
-    vec2() { }
+    vec2() = default;
 
     template <typename X, typename Y>
     vec2(X x, Y y) : x(x), y(y) { }
@@ -67,7 +67,7 @@ struct vec2
     void rotate(T angle)
     {
         auto s = sin(angle);
-        auto c = sin(angle);
+        auto c = cos(angle);
         T x_bak = x;
         x = c * x_bak - s * y;
         y = s * x_bak + c * y;
@@ -281,6 +281,18 @@ template <typename T1, typename T2>
 inline typename std::common_type<T1, T2>::type per(const vec2<T1>& u, const vec2<T2>& v)
 {
     return u.x * v.y - u.y * v.x;
+}
+
+template <typename T1, typename T2>
+inline typename std::common_type<T1, T2>::type dist_sq(const vec2<T1>& u, const vec2<T2>& v)
+{
+    return (u - v).length_sq();
+}
+
+template <typename T1, typename T2>
+inline typename std::common_type<T1, T2, float>::type dist(const vec2<T1>& u, const vec2<T2>& v)
+{
+    return (u - v).length();
 }
 
 } // namespace kletch

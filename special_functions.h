@@ -11,10 +11,21 @@ using std::isinf;
 
 using std::abs;
 using std::copysign;
+using std::signbit;
 using std::cos;
 using std::sin;
 using std::sqrt;
 using std::hypot;
+
+inline double sgn(float x)
+{
+    return signbit(x) ? -1.0f : 1.0;
+}
+
+inline double sgn(double x)
+{
+    return signbit(x) ? -1.0 : 1.0;
+}
 
 template <typename T>
 inline T sq(T x)

@@ -22,30 +22,11 @@ struct box2
 
     void expand(T x, T y)
     {
-        expand(x0, x1, x);
-        expand(y0, y1, y);
+        x0 = min(x0, x); x1 = max(x1, x);
+        y0 = min(y0, y); y1 = max(y1, y);
     }
 
     void expand(const vec2<T>& u) { expand(u.x, u.y); }
-
-private:
-    void expand(T& v0, T& v1, T v)
-    {
-        if (v0 <= v1)
-        {
-            if (v < v0)
-                v0 = v;
-            else if (v1 < v)
-                v1 = v;
-        }
-        else
-        {
-            if (v < v1)
-                v1 = v;
-            else if (v0 < v)
-                v0 = v;
-        }
-    }
 };
 
 typedef box2<float> box2f;
@@ -57,6 +38,12 @@ const box2<T> box2<T>::EMPTY = box2<T>(
     std::numeric_limits<T>::infinity(), std::numeric_limits<T>::infinity(),
     -std::numeric_limits<T>::infinity(), -std::numeric_limits<T>::infinity()
 );
+
+template <typename T>
+std::ostream& operator << (std::ostream& out, const box2<T>& box)
+{
+    return out << '(' << box.x0 << ", " << box.y0 << ")-(" << box.x1 << ", " << box.y1 << ')';
+}
 
 } // namespace kletch
 
