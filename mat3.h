@@ -12,6 +12,15 @@ struct mat3
 {
     static const mat3 EYE;
 
+    static constexpr mat3 eye()
+    {
+        return mat3(
+            1, 0, 0,
+            0, 1, 0,
+            0, 0, 1
+        );
+    }
+
     static mat3 create_scale(T sx, T sy)
     {
         mat3 m = EYE;
@@ -33,6 +42,17 @@ struct mat3
         a12(a12), a22(a22), a32(a32),
         a13(a13), a23(a23), a33(a33)
     { }
+
+    T det()
+    {
+        return
+            a11 * a22 * a33 +
+            a12 * a23 * a31 +
+            a13 * a21 * a32 -
+            a13 * a22 * a31 -
+            a12 * a21 * a33 -
+            a11 * a23 * a32;
+    }
 
     mat3& scale(T sx, T sy)
     {
@@ -67,7 +87,6 @@ struct mat3
         x = a13; y = a23;
         a13 = c * x - s * y;
         a23 = s * x + c * y;
-
         return *this;
     }
 
@@ -76,18 +95,18 @@ struct mat3
     mat3& pre_mul(const mat3<T>& m)
     {
         T x = a11, y = a21, z = a31;
-        a11 = m.a11 * x + m.a21 * y + m.a31 * z;
-        a21 = m.a21 * x + m.a22 * y + m.a32 * z;
+        a11 = m.a11 * x + m.a12 * y + m.a13 * z;
+        a21 = m.a21 * x + m.a22 * y + m.a23 * z;
         a31 = m.a31 * x + m.a32 * y + m.a33 * z;
 
         x = a12; y = a22; z = a32;
-        a12 = m.a11 * x + m.a21 * y + m.a31 * z;
-        a22 = m.a21 * x + m.a22 * y + m.a32 * z;
+        a12 = m.a11 * x + m.a12 * y + m.a13 * z;
+        a22 = m.a21 * x + m.a22 * y + m.a23 * z;
         a32 = m.a31 * x + m.a32 * y + m.a33 * z;
 
         x = a13; y = a23; z = a33;
-        a13 = m.a11 * x + m.a21 * y + m.a31 * z;
-        a23 = m.a21 * x + m.a22 * y + m.a32 * z;
+        a13 = m.a11 * x + m.a12 * y + m.a13 * z;
+        a23 = m.a21 * x + m.a22 * y + m.a23 * z;
         a33 = m.a31 * x + m.a32 * y + m.a33 * z;
 
         return *this;
@@ -98,7 +117,7 @@ struct mat3
         return vec2<T>(
             a11 * x + a12 * y + a13,
             a21 * x + a22 * y + a23
-        ) / a31 * x + a32 * y + a33;
+        ) / (a31 * x + a32 * y + a33);
     }
 
     vec2<T> transform(const vec2<T>& v) const { return transform(v.x, v.y); }
@@ -119,11 +138,7 @@ typedef mat3<double> mat3d;
 typedef mat3<real> mat3r;
 
 template <typename T>
-const mat3<T> mat3<T>::EYE = mat3<T>(
-    1, 0, 0,
-    0, 1, 0,
-    0, 0, 1
-);
+const mat3<T> mat3<T>::EYE = mat3<T>::eye();
 
 template <typename T>
 mat3<T> operator * (const mat3<T>& m1, mat3<T> m2)
