@@ -3,6 +3,7 @@
 
 #include "prefix.h"
 #include "vec2.h"
+#include "mat3.h"
 
 namespace kletch {
 
@@ -20,6 +21,10 @@ struct box2
 
     box2(T x0, T y0, T x1, T y1) : x0(x0), y0(y0), x1(x1), y1(y1) { }
 
+    T span_x() const { return x1 - x0; }
+    T span_y() const { return y1 - y0; }
+    vec2<T> center() const { return vec2<T>((x0 + x1) / 2, (y0 + y1) / 2); }
+
     void expand(T x, T y)
     {
         x0 = min(x0, x); x1 = max(x1, x);
@@ -27,6 +32,8 @@ struct box2
     }
 
     void expand(const vec2<T>& u) { expand(u.x, u.y); }
+
+    mat3<T> matrix_to() const;
 };
 
 typedef box2<float> box2f;
@@ -38,6 +45,17 @@ const box2<T> box2<T>::EMPTY = box2<T>(
     std::numeric_limits<T>::infinity(), std::numeric_limits<T>::infinity(),
     -std::numeric_limits<T>::infinity(), -std::numeric_limits<T>::infinity()
 );
+
+template <typename T>
+mat3<T> box2<T>::matrix_to() const
+{
+    vec2<T> c = center();
+    return mat3<T>(
+        span_x() / 2,            0, c.x,
+                   0, span_y() / 2, c.y,
+                   0,            0,   1
+    );
+}
 
 template <typename T>
 std::ostream& operator << (std::ostream& out, const box2<T>& box)
