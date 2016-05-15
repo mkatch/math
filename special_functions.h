@@ -16,6 +16,14 @@ using std::cos;
 using std::sin;
 using std::sqrt;
 using std::hypot;
+using std::log;
+using std::floor;
+using std::isnormal;
+
+inline float log(float b, float x)
+{
+    return log(x) / log(b);
+}
 
 inline double sgn(float x)
 {
