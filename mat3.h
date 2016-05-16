@@ -46,12 +46,12 @@ struct mat3
     T det()
     {
         return
-            a11 * a22 * a33 +
-            a12 * a23 * a31 +
-            a13 * a21 * a32 -
-            a13 * a22 * a31 -
-            a12 * a21 * a33 -
-            a11 * a23 * a32;
+            + a11 * a22 * a33
+            + a12 * a23 * a31
+            + a13 * a21 * a32
+            - a13 * a22 * a31
+            - a12 * a21 * a33
+            - a11 * a23 * a32;
     }
 
     mat3& scale(T sx, T sy)
@@ -92,7 +92,7 @@ struct mat3
 
     vec2<T> translation() const { return vec2<T>(a13 / a33, a23 / a33); }
 
-    mat3& pre_mul(const mat3<T>& m)
+    mat3& premul(const mat3<T>& m)
     {
         T x = a11, y = a21, z = a31;
         a11 = m.a11 * x + m.a12 * y + m.a13 * z;
@@ -112,25 +112,17 @@ struct mat3
         return *this;
     }
 
-    vec2<T> transform(T x, T y) const
+    vec2<T> tform(T x, T y) const
     {
-        return vec2<T>(
-            a11 * x + a12 * y + a13,
-            a21 * x + a22 * y + a23
-        ) / (a31 * x + a32 * y + a33);
+        return vec2<T>(a11 * x + a12 * y + a13, a21 * x + a22 * y + a23)
+             / (a31 * x + a32 * y + a33);
     }
 
-    vec2<T> transform(const vec2<T>& v) const { return transform(v.x, v.y); }
+    vec2<T> tform(const vec2<T>& v) const { return tform(v.x, v.y); }
 
-    vec2<T> transform_vector(T x, T y) const
-    {
-        return vec2<T>(
-            a11 * x + a12 * y,
-            a21 * x + a22 * y
-        );
-    }
+    vec2<T> tformv(T x, T y) const { return vec2<T>(a11 * x + a12 * y, a21 * x + a22 * y); }
 
-    vec2<T> transform_vector(const vec2<T>& v) const { return transform_vector(v.x, v.y); }
+    vec2<T> tformv(const vec2<T>& v) const { return tformv(v.x, v.y); }
 };
 
 typedef mat3<float> mat3f;
@@ -143,7 +135,7 @@ const mat3<T> mat3<T>::EYE = mat3<T>::eye();
 template <typename T>
 mat3<T> operator * (const mat3<T>& m1, mat3<T> m2)
 {
-    return m2.pre_mul(m1);
+    return m2.premul(m1);
 }
 
 template <typename T>
