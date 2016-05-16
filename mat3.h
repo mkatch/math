@@ -10,8 +10,6 @@ namespace kletch {
 template <typename T>
 struct mat3
 {
-    static const mat3 EYE;
-
     static constexpr mat3 eye()
     {
         return mat3(
@@ -19,12 +17,6 @@ struct mat3
             0, 1, 0,
             0, 0, 1
         );
-    }
-
-    static mat3 create_scale(T sx, T sy)
-    {
-        mat3 m = EYE;
-        return m.scale(sx, sy);
     }
 
     T a11; T a21; T a31;
@@ -126,11 +118,13 @@ struct mat3
 };
 
 typedef mat3<float> mat3f;
-typedef mat3<double> mat3d;
-typedef mat3<real> mat3r;
+inline constexpr mat3f eye3f() { return mat3f::eye(); }
 
-template <typename T>
-const mat3<T> mat3<T>::EYE = mat3<T>::eye();
+typedef mat3<double> mat3d;
+inline constexpr mat3d eye3d() { return mat3d::eye(); }
+
+typedef mat3<real> mat3r;
+inline constexpr mat3r eye3r() { return mat3r::eye(); }
 
 template <typename T>
 mat3<T> operator * (const mat3<T>& m1, mat3<T> m2)

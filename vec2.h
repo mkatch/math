@@ -83,9 +83,7 @@ struct vec2
     typename std::common_type<T, float>::type angle() const { return atan2(y, x); }
 
     bool any_nan() { return isnan(x) || isnan(y); }
-
     bool any_inf() { return isinf(x) || isinf(y); }
-
     bool any_broken() { return any_nan() || any_inf(); }
 
     template <typename S>
