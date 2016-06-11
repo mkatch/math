@@ -9,7 +9,7 @@
 
 namespace kletch {
 
-#ifdef KLETCH_USE_DOUBLES
+#ifdef KLETCH_WITH_DOUBLE
     typedef double real;
 #else
     typedef float real;
