@@ -22,7 +22,7 @@ using std::floor;
 using std::isnormal;
 
 inline float log(float b, float x) { return log(x) / log(b); }
-inline double sgn(float x) { return signbit(x) ? -1.0f : 1.0; }
+inline float sgn(float x) { return signbit(x) ? -1.0f : 1.0f; }
 inline double sgn(double x) { return signbit(x) ? -1.0 : 1.0; }
 template <class T> inline T sq(T x) { return x * x; }
 template <class T> inline T lerp(T v0, T v1, T a) { return (1 - a) * v0 + a * v1; }
