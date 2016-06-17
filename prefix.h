@@ -5,7 +5,7 @@
 #include <tuple>
 #include <iostream>
 #include <limits>
-#include "special_functions.h"
+#include <type_traits>
 
 namespace kletch {
 
@@ -23,6 +23,9 @@ using std::swap;
 typedef std::numeric_limits<double> double_limits;
 typedef std::numeric_limits<float> float_limits;
 typedef std::numeric_limits<real> real_limits;
+
+template <class... Ts>
+using common_t = typename std::common_type<Ts...>::type;
 
 } // namespace kletch
 

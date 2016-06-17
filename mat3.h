@@ -23,9 +23,9 @@ struct mat3
     T a12; T a22; T a32;
     T a13; T a23; T a33;
 
-    mat3() = default;
+    constexpr mat3() = default;
 
-    mat3(
+    constexpr mat3(
         T a11, T a12, T a13,
         T a21, T a22, T a23,
         T a31, T a32, T a33

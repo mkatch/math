@@ -2,6 +2,7 @@
 #define KLETCH_MATH_BOX_H
 
 #include "prefix.h"
+#include "special_functions.h"
 #include "vec2.h"
 #include "mat3.h"
 
