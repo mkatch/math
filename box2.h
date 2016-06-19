@@ -58,12 +58,6 @@ mat3<T> box2<T>::matrix_to() const
     );
 }
 
-template <typename T>
-std::ostream& operator << (std::ostream& out, const box2<T>& box)
-{
-    return out << '(' << box.x0 << ", " << box.y0 << ")-(" << box.x1 << ", " << box.y1 << ')';
-}
-
 } // namespace kletch
 
 #endif // KLETCH_MATH_BOX_H

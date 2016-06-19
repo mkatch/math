@@ -153,12 +153,6 @@ vec2<T>& vec2<T>::rot(common_t<T, float> angle)
     return *this = { c * x - s * y, s * x + c * y };
 }
 
-template <class T> inline
-std::ostream& operator << (std::ostream& out, const vec2<T>& v)
-{
-    return out << '(' << v.x << ", " << v.y << ')';
-}
-
 typedef vec2<int> vec2i;
 constexpr vec2i zero2i() { return zero2<int>(); }
 constexpr vec2i unx2i() { return unx2<int>(); }

@@ -57,7 +57,7 @@ struct mat2
             a21 * x + a22 * y
         );
     }
-
+    
     mat2& operator /= (T s)
     {
         a11 /= s;
@@ -76,16 +76,6 @@ template <typename T>
 inline mat2<T> operator * (const mat2<T>& m1, mat2<T> m2)
 {
     return m2.pre_mul(m1);
-}
-
-template <typename T>
-std::ostream& operator << (std::ostream& out, const mat2<T>& m)
-{
-    out << '(';
-    out << m.a11 << ' ' << m.a12 << "; ";
-    out << m.a21 << ' ' << m.a22;
-    out << ')';
-    return out;
 }
 
 } // namespace kletch

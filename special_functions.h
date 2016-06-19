@@ -2,13 +2,8 @@
 #define KLETCH_MATH_SPECIAL_FUNCTIONS_H
 
 #include "prefix.h"
-#include <cmath>
-#include <type_traits>
 
 namespace kletch {
-
-using std::isnan;
-using std::isinf;
 
 using std::abs;
 using std::copysign;
@@ -19,7 +14,6 @@ using std::sqrt;
 using std::hypot;
 using std::log;
 using std::floor;
-using std::isnormal;
 
 inline float log(float b, float x) { return log(x) / log(b); }
 inline float sgn(float x) { return signbit(x) ? -1.0f : 1.0f; }

@@ -132,16 +132,6 @@ mat3<T> operator * (const mat3<T>& m1, mat3<T> m2)
     return m2.premul(m1);
 }
 
-template <typename T>
-std::ostream& operator << (std::ostream& out, const mat3<T>& m)
-{
-    out << '(';
-    out << m.a11 << ' ' << m.a12 << ' ' << m.a13 << "; ";
-    out << m.a21 << ' ' << m.a22 << ' ' << m.a23 << "; ";
-    out << m.a31 << ' ' << m.a32 << ' ' << m.a33;
-    return out << ')';
-}
-
 } // namespace kletch
 
 #endif // KLETCH_MATH_MAT3_H
