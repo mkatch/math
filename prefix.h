@@ -30,16 +30,16 @@ template <class Tf, class Td> inline constexpr real rl(Tf xf, Td xd)
 
 using std::swap;
 
-typedef std::numeric_limits<float> float_limits;
-typedef std::numeric_limits<double> double_limits;
-typedef std::numeric_limits<real> real_limits;
-
-constexpr float NaNf = float_limits::quiet_NaN();
-constexpr double NaNd = double_limits::quiet_NaN();
-constexpr real NaN = real_limits::quiet_NaN();
-
 template <class... Ts>
 using common_t = typename std::common_type<Ts...>::type;
+
+template <typename T> using limits = std::numeric_limits;
+template <class T> inline constexpr T nan() { return limits<T>::quiet_NaN(); }
+template <class T> inline constexpr T inf() { return limits<T>::infinity(); }
+template <class T> inline constexpr
+T pi() { return static_cast<T>(3.141592653589793238462643383); }
+template <class T> inline constexpr
+T half_pi() { return static_cast<T>(1.570796326794896619231321691); }
 
 } // namespace kletch
 
