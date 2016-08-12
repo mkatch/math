@@ -33,7 +33,7 @@ using std::swap;
 template <class... Ts>
 using common_t = typename std::common_type<Ts...>::type;
 
-template <typename T> using limits = std::numeric_limits;
+template <class T> using limits = std::numeric_limits<T>;
 template <class T> inline constexpr T nan() { return limits<T>::quiet_NaN(); }
 template <class T> inline constexpr T inf() { return limits<T>::infinity(); }
 template <class T> inline constexpr
