@@ -15,7 +15,7 @@ struct vec2
     vec2() = default;
     constexpr vec2(T x, T y) : x(x), y(y) { }
     constexpr vec2(T value) : x(value), y(value) { }
-    constexpr vec2(vec2 const& v) : vec2(v.x, v.y) { }
+    constexpr vec2(vec2 const& v) : x(v.x), y(v.y) { }
 
     template <class T1, class T2>
     vec2(vec2<T1> const& u, vec2<T2> const& v) : x(v.x - u.x), y(v.y - u.y) { }
@@ -54,7 +54,7 @@ struct vec2
     vec2& fix(T x, T y) { return fix(vec2(x, y)); }
 };
 
-template <class S, class T> using vec2c = class vec2<common_t<S, T>>;
+template <class S, class T> using vec2c = vec2<common_t<S, T>>;
 template <class T> constexpr vec2<T> zero2() { return vec2<T>(0, 0); }
 template <class T> constexpr vec2<T> unx2() { return vec2<T>(1, 0); }
 template <class T> constexpr vec2<T> uny2() { return vec2<T>(0, 1); }
