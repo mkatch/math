@@ -15,6 +15,9 @@ using std::hypot;
 using std::log;
 using std::floor;
 
+#undef min
+#undef max
+
 inline float log(float b, float x) { return log(x) / log(b); }
 inline float sgn(float x) { return signbit(x) ? -1.0f : 1.0f; }
 inline double sgn(double x) { return signbit(x) ? -1.0 : 1.0; }
