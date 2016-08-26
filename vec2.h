@@ -134,6 +134,9 @@ vec2c<T, float> dir(vec2<T> const& v) { v.dir(); }
 template <class S, class T> inline
 vec2c<T, float> dir(vec2<S> const& u, vec2<T> const& v) { return span(u, v).dir(); }
 
+template <class T> inline
+vec2<T> dir(T angle) { return vec2<T>(cos(angle), sin(angle)); }
+
 template <class T> template<class S> inline
 vec2<S> vec2<T>::of(vec2<S> const& unx, vec2<S> const& uny) const
 {
