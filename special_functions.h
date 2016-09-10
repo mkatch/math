@@ -18,6 +18,7 @@ using std::floor;
 #undef min
 #undef max
 
+inline int abs(int x) { return x >= 0 ? x : -x; }
 inline float log(float b, float x) { return log(x) / log(b); }
 inline float sgn(float x) { return signbit(x) ? -1.0f : 1.0f; }
 inline double sgn(double x) { return signbit(x) ? -1.0 : 1.0; }
