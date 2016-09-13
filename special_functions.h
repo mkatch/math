@@ -24,6 +24,7 @@ inline float sgn(float x) { return signbit(x) ? -1.0f : 1.0f; }
 inline double sgn(double x) { return signbit(x) ? -1.0 : 1.0; }
 template <class T> inline T sq(T x) { return x * x; }
 template <class T> inline T lerp(T v0, T v1, T a) { return (1 - a) * v0 + a * v1; }
+template <class T> inline T clamp(T v0, T v1, T v) { return v <= v0 ? v0 : (v1 <= v ? v1 : v); }
 template <class T, class S> inline common_t<T, S> min(T const& a, S const& b) { return a<b ? a:b; }
 template <class T, class S> inline common_t<T, S> max(T const& a, S const& b) { return a>b ? a:b; }
 
