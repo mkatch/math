@@ -12,9 +12,16 @@ struct mat2
     T a11; T a21;
     T a12; T a22;
 
+    static constexpr mat2 eye()
+    {
+        return mat2(
+            1, 0,
+            0, 1);
+    }
+
     mat2() = default;
 
-    mat2(
+    constexpr mat2(
         T a11, T a12,
         T a21, T a22
     ) :
@@ -69,6 +76,8 @@ struct mat2
 };
 
 typedef mat2<float> mat2f;
+inline constexpr mat2f eye2f() { return mat2f::eye(); }
+
 typedef mat2<double> mat2d;
 typedef mat2<real> mat2r;
 
