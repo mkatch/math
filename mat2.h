@@ -55,6 +55,21 @@ struct mat2
         return *this;
     }
 
+    mat2& rotate(T angle)
+    {
+        T c = cos(angle), s = sin(angle);
+
+        T x = a11, y = a21;
+        a11 = c * x - s * y;
+        a21 = s * x + c * y;
+
+        x = a12; y = a22;
+        a12 = c * x - s * y;
+        a22 = s * x + c * y;
+
+        return *this;
+    }
+
     vec2<T> transform(const vec2<T>& v) const { return transform(v.x, v.y); }
 
     vec2<T> transform(T x, T y) const
