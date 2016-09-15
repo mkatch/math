@@ -2,7 +2,7 @@
 #define KLETCH_MATH_PRINTING_H
 
 #include "prefix.h"
-#include "printing.h"
+#include "../printing.h"
 
 #include "math.h"
 
@@ -43,4 +43,4 @@ std::ostream& operator << (std::ostream& out, box2<T> const& box)
 
 } // namespace kletch
 
-#endif KLETCH_MATH_PRINT_H
+#endif // KLETCH_MATH_PRINT_H
