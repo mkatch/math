@@ -33,7 +33,7 @@ struct vec2
     vec2& operator /= (vec2 const& v) { x /= v.x; y /= v.y; return *this; }
     vec2& operator /= (T s) { return *this *= 1.0f / s; }
 
-    T operator [] (int component) const { return *(reinterpret_cast<T const*>(this) + component); }
+    T operator [] (int i) const { return *(reinterpret_cast<T const*>(this) + i); }
     template<class S> operator vec2<S> () const { return vec2<S>(x, y); }
 
     vec2& norm() { return *this /= len(); }
