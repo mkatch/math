@@ -64,10 +64,10 @@ struct mat3
 
     mat3& translate(const vec2<T>& t) { return translate(t.x, t.y); }
 
-    mat3& rotate(T angle)
-    {
-        T c = cos(angle); T s = sin(angle);
+    mat3& rotate(T angle) { return rotate(sin(angle), cos(angle)); }
 
+    mat3& rotate(T s, T c)
+    {
         T x = a11, y = a21;
         a11 = c * x - s * y;
         a21 = s * x + c * y;
@@ -80,6 +80,13 @@ struct mat3
         a13 = c * x - s * y;
         a23 = s * x + c * y;
         return *this;
+    }
+
+    mat3& map(vec2<T> const& u, vec2<T> const& v)
+    {
+        auto ulen = len(u), vlen = len(v);
+        auto f = 1 / (ulen * vlen);
+        return rotate(per(u, v) * f, dot(u, v) * f).scale(vlen / ulen);
     }
 
     vec2<T> translation() const { return vec2<T>(a13 / a33, a23 / a33); }
