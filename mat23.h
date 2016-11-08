@@ -12,9 +12,9 @@ struct mat23
     T a12; T a22;
     T a13; T a23;
 
-    constexpr mat3() = default;
+    constexpr mat23() = default;
 
-    constexpr mat3(
+    constexpr mat23(
         T a11, T a12, T a13,
         T a21, T a22, T a23
     ) :
@@ -63,16 +63,16 @@ struct mat23
     vec2<T> transform(vec2<T> const& v) const { return transform(v.x, v.y); }
 };
 
-template <class T> inline constexpr eye23() { return mat23<T>::eye(); }
+template <class T> inline constexpr mat23<T> eye23() { return mat23<T>::eye(); }
 
 typedef mat23<float> mat23f;
-inline constexpr eye23f() { return eye23<float>(); }
+inline constexpr mat23f eye23f() { return eye23<float>(); }
 
 typedef mat23<double> mat23d;
-inline constexpr eye23d() { return eye23<double>(); }
+inline constexpr mat23d eye23d() { return eye23<double>(); }
 
 typedef mat23<real> mat23r;
-inline constexpr eye23r() { return eye23<real>(); }
+inline constexpr mat23f eye23r() { return eye23<real>(); }
 
 } // namespace kletch
 
