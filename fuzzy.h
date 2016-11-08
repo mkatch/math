@@ -4,14 +4,14 @@
 
 namespace kletch {
 
-template <class T> inline bool equal(T a, T b, T eps)
+template <class T> inline bool equal_sametype(T a, T b, T eps)
 {
     return abs(a - b) <= eps * (T(0.5) * abs(a + b) + T(1));
 }
 
 template <class T1, class T2> inline bool equal(T1 a, T2 b, common_t<T1, T2> eps)
 {
-    return equal<common_t<T1, T2>>(a, b, eps);
+    return equal_sametype<common_t<T1, T2>>(a, b, eps);
 }
 
 } // namespace kletch
