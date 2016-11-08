@@ -6,6 +6,7 @@
 #include "special_functions.h"
 #include "vec2.h"
 #include "mat2.h"
+#include "mat23.h"
 #include "mat3.h"
 #include "box2.h"
 
