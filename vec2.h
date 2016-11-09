@@ -150,7 +150,7 @@ vec2c<S, T> mid(vec2<S> const& u, vec2<T> const& v) { return vec2c<S, T>::mid(u,
 template <class T>
 vec2<T> bisector(vec2<T> const& u, vec2<T> const& v)
 {
-    return cross(u, v) >= 0 ? u + v + lhp(u) + rhp(v) : u + v + rhp(u) + lhp(v);
+    return per(u, v) >= 0 ? u + v + lhp(u) + rhp(v) : u + v + rhp(u) + lhp(v);
 }
 
 template <class S, class T> inline
