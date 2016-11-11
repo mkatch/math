@@ -9,5 +9,6 @@
 #include "mat23.h"
 #include "mat3.h"
 #include "box2.h"
+#include "fline2.h"
 
 #endif // KLETCH_MATH_MATH_H
