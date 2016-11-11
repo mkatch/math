@@ -48,8 +48,8 @@ struct mat23
 
     mat23& translate(T dx, T dy)
     {
-        a11 += a31 * dx; a12 += a32 * dx; a13 += a33 * dx;
-        a21 += a31 * dy; a22 += a32 * dy; a23 += a33 * dy;
+        a13 += dx;
+        a23 += dy;
         return *this;
     }
 
