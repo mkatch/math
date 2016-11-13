@@ -94,6 +94,8 @@ struct mat3
         return *this;
     }
 
+    mat3& rotate(vec2<T> const& r) { return rotate(r.y, r.x); }
+
     mat3& map(vec2<T> const& u, vec2<T> const& v)
     {
         auto ulen = len(u), vlen = len(v);
