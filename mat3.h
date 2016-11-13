@@ -131,7 +131,7 @@ struct mat3
 
         x = a12; y = a22;
         a12 = m.a11 * x + m.a12 * y;
-        a21 = m.a21 * x + m.a22 * y;
+        a22 = m.a21 * x + m.a22 * y;
 
         return *this;
     }

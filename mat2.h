@@ -70,7 +70,7 @@ struct mat2
 
     mat2& rotate(T angle) { return rotate(sin(angle), cos(angle)); }
 
-    mat2& rotate(vec2<T> const& r) { return rotate(r.x, r.y); }
+    mat2& rotate(vec2<T> const& r) { return rotate(r.y, r.x); }
 
     vec2<T> transform(const vec2<T>& v) const { return transform(v.x, v.y); }
 
