@@ -46,6 +46,8 @@ struct mat23
 
     mat23& rotate(T angle) { return rotate(sin(angle), cos(angle)); }
 
+    mat23& rotate(vec2<T> const& r) { return rotate(r.y, r.x); }
+
     mat23& translate(T dx, T dy)
     {
         a13 += dx;

@@ -35,6 +35,18 @@ struct mat3
         a13(a13), a23(a23), a33(a33)
     { }
 
+    constexpr mat3(mat2<T> const& m) : mat3(
+        m.a11, m.a12, 0,
+        m.a21, m.a22, 0,
+            0,     0, 1
+    ) { }
+
+    constexpr mat3(mat23<T> const& m) : mat3(
+        m.a11, m.a12, m.a13,
+        m.a21, m.a22, m.a23,
+            0,     0,     1
+    ) { }
+
     T det()
     {
         return
@@ -107,6 +119,19 @@ struct mat3
         a13 = m.a11 * x + m.a12 * y + m.a13 * z;
         a23 = m.a21 * x + m.a22 * y + m.a23 * z;
         a33 = m.a31 * x + m.a32 * y + m.a33 * z;
+
+        return *this;
+    }
+
+    mat3& premul(mat2<T> const& m)
+    {
+        T x = a11, y = a21;
+        a11 = m.a11 * x + m.a12 * y;
+        a21 = m.a21 * x + m.a22 * y;
+
+        x = a12; y = a22;
+        a12 = m.a11 * x + m.a12 * y;
+        a21 = m.a21 * x + m.a22 * y;
 
         return *this;
     }
