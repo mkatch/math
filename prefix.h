@@ -30,6 +30,8 @@ template <class Tf, class Td> inline constexpr real rl(Tf xf, Td xd)
 
 using std::swap;
 
+template <class T> inline bool isbroken(T x) { return !isnormal(x); }
+
 template <class... Ts>
 using common_t = typename std::common_type<Ts...>::type;
 
