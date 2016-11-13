@@ -20,8 +20,7 @@ using std::floor;
 
 inline int abs(int x) { return x >= 0 ? x : -x; }
 inline float log(float b, float x) { return log(x) / log(b); }
-inline float sgn(float x) { return signbit(x) ? -1.0f : 1.0f; }
-inline double sgn(double x) { return signbit(x) ? -1.0 : 1.0; }
+template <class T> inline T sgn(T x) { return copysign(T(1), x); }
 template <class T> inline T sq(T x) { return x * x; }
 template <class T> inline T lerp(T v0, T v1, T a) { return (1 - a) * v0 + a * v1; }
 template <class T> inline T clamp(T v0, T v1, T v) { return v <= v0 ? v0 : (v1 <= v ? v1 : v); }
