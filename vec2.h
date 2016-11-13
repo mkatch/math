@@ -54,7 +54,6 @@ struct vec2
     static T dist_sq(vec2 const& u, vec2 const& v) { return span(u, v).len_sq(); }
     static float_t dist(vec2 const& u, vec2 const& v) { return span(u, v).len(); }
     static vec2 mid(vec2 const& u, vec2 const& v) { return T(0.5) * (u + v); }
-    static vec2 bisector(vec2 const& u, vec2 const& v);
 
     template <class S> vec2<S> of(vec2<S> const& unx, vec2<S> const& uny) const;
     template <class S> vec2<S> in(vec2<S> const& unx, vec2<S> const& uny) const;
@@ -146,15 +145,6 @@ typename vec2c<S, T>::float_t dist(vec2<S> const& u, vec2<T> const& v)
 
 template <class S, class T> inline
 vec2c<S, T> mid(vec2<S> const& u, vec2<T> const& v) { return vec2c<S, T>::mid(u, v); }
-
-template <class T>
-vec2<T> bisector(vec2<T> const& u, vec2<T> const& v)
-{
-    return per(u, v) >= 0 ? u + v + lhp(u) + rhp(v) : u + v + rhp(u) + lhp(v);
-}
-
-template <class S, class T> inline
-vec2c<S, T> bisector(vec2<S> const& u, vec2<T> const& v) { return vec2c<S, T>::bisector(u, v); }
 
 template <class T> inline
 vec2c<T, float> dir(vec2<T> const& v) { v.dir(); }
