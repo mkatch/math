@@ -17,8 +17,10 @@ using std::floor;
 
 #undef min
 #undef max
+#ifndef KLETCH_MSVC
+    inline int abs(int x) { return x >= 0 ? x : -x; }
+#endif
 
-inline int abs(int x) { return x >= 0 ? x : -x; }
 inline float log(float b, float x) { return log(x) / log(b); }
 template <class T> inline T sgn(T x) { return copysign(T(1), x); }
 template <class T> inline T sq(T x) { return x * x; }
