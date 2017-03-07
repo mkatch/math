@@ -1,0 +1,15 @@
+#ifndef KLETCH_MATH_CONSTANTS_H
+#define KLETCH_MATH_CONSTANTS_H
+
+namespace kletch {
+
+constexpr float PIf = 3.141592653589793238462643383f;
+constexpr double PId = 3.141592653589793238462643383;
+constexpr real PI = rl(3.141592653589793238462643383);
+constexpr float HALF_PIf = 1.570796326794896619231321691f;
+constexpr double HALF_PId = 1.570796326794896619231321691;
+constexpr real HALF_PI = rl(1.570796326794896619231321691);
+
+} // namespace kletch
+
+#endif // KLETCH_MATH_CONSTANTS_H
