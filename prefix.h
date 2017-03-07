@@ -12,7 +12,7 @@ using std::isnan;
 using std::isinf;
 using std::isnormal;
 
-#ifdef JOGURT_WITH_DOUBLE
+#ifdef JOGURT_MATH_REAL_IS_DOUBLE
     typedef double real;
 #else
     typedef float real;
@@ -21,7 +21,7 @@ using std::isnormal;
 template <class T> inline constexpr real rl(T x) { return static_cast<real>(x); }
 template <class Tf, class Td> inline constexpr real rl(Tf xf, Td xd)
 {
-#   ifdef JOGURT_WITH_DOUBLE
+#   ifdef JOGURT_MATH_REAL_IS_DOUBLE
         return rl(xd);
 #   else
         return rl(xf);
