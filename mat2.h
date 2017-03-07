@@ -1,10 +1,10 @@
-#ifndef KLETCH_MATH_MAT2_H
-#define KLETCH_MATH_MAT2_H
+#ifndef JOGURT_MATH_MAT2_H
+#define JOGURT_MATH_MAT2_H
 
 #include "prefix.h"
 #include "vec2.h"
 
-namespace kletch {
+namespace jogurt {
 
 template <typename T>
 struct mat2
@@ -107,6 +107,6 @@ inline mat2<T> operator * (const mat2<T>& m1, mat2<T> m2)
     return m2.pre_mul(m1);
 }
 
-} // namespace kletch
+} // namespace jogurt
 
-#endif // KLETCH_MATH_MAT2_H
+#endif // JOGURT_MATH_MAT2_H

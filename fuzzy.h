@@ -1,8 +1,8 @@
-#ifndef KLETCH_MATH_FUZZY_H
-#define KLETCH_MATH_FUZZY_H
-#define KLETCH_MATH_FUZZY_H_INSIDE
+#ifndef JOGURT_MATH_FUZZY_H
+#define JOGURT_MATH_FUZZY_H
+#define JOGURT_MATH_FUZZY_H_INSIDE
 
-namespace kletch {
+namespace jogurt {
 
 template <class T> inline bool equal_sametype(T a, T b, T eps)
 {
@@ -14,11 +14,11 @@ template <class T1, class T2> inline bool equal(T1 a, T2 b, common_t<T1, T2> eps
     return equal_sametype<common_t<T1, T2>>(a, b, eps);
 }
 
-} // namespace kletch
+} // namespace jogurt
 
-#ifdef KLETCH_MATH_VEC2_H
+#ifdef JOGURT_MATH_VEC2_H
 #   include "fuzzy_vec2.h"
 #endif
 
-#undef KLETCH_MATH_FUZZY_H_INSIDE
-#endif // KLETCH_MATH_FUZZY_H
+#undef JOGURT_MATH_FUZZY_H_INSIDE
+#endif // JOGURT_MATH_FUZZY_H

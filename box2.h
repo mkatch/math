@@ -1,12 +1,12 @@
-#ifndef KLETCH_MATH_BOX_H
-#define KLETCH_MATH_BOX_H
+#ifndef JOGURT_MATH_BOX_H
+#define JOGURT_MATH_BOX_H
 
 #include "prefix.h"
 #include "special_functions.h"
 #include "vec2.h"
 #include "mat3.h"
 
-namespace kletch {
+namespace jogurt {
 
 template <typename T>
 struct box2
@@ -58,6 +58,6 @@ mat3<T> box2<T>::matrix_to() const
     );
 }
 
-} // namespace kletch
+} // namespace jogurt
 
-#endif // KLETCH_MATH_BOX_H
+#endif // JOGURT_MATH_BOX_H

@@ -1,11 +1,11 @@
-#ifndef KLETCH_MATH_VEC2_H
-#define KLETCH_MATH_VEC2_H
-#define KLETCH_MATH_VEC2_H_INSIDE
+#ifndef JOGURT_MATH_VEC2_H
+#define JOGURT_MATH_VEC2_H
+#define JOGURT_MATH_VEC2_H_INSIDE
 
 #include "prefix.h"
 #include "special_functions.h"
 
-namespace kletch {
+namespace jogurt {
 
 template <class T>
 struct vec2
@@ -232,11 +232,11 @@ constexpr vec2r zero2r() { return zero2<real>(); }
 constexpr vec2r unx2r() { return unx2<real>(); }
 constexpr vec2r uny2r() { return uny2<real>(); }
 
-} // namespace kletch
+} // namespace jogurt
 
-#ifdef KLETCH_MATH_FUZZY_H
+#ifdef JOGURT_MATH_FUZZY_H
 #   include "fuzzy_vec2.h"
 #endif
 
-#undef KLETCH_MATH_VEC2_H_INSIDE
-#endif // KLETCH_MATH_VEC2_H
+#undef JOGURT_MATH_VEC2_H_INSIDE
+#endif // JOGURT_MATH_VEC2_H

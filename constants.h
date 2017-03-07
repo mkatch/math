@@ -1,7 +1,7 @@
-#ifndef KLETCH_MATH_CONSTANTS_H
-#define KLETCH_MATH_CONSTANTS_H
+#ifndef JOGURT_MATH_CONSTANTS_H
+#define JOGURT_MATH_CONSTANTS_H
 
-namespace kletch {
+namespace jogurt {
 
 constexpr float PIf = 3.141592653589793238462643383f;
 constexpr double PId = 3.141592653589793238462643383;
@@ -10,6 +10,6 @@ constexpr float HALF_PIf = 1.570796326794896619231321691f;
 constexpr double HALF_PId = 1.570796326794896619231321691;
 constexpr real HALF_PI = rl(1.570796326794896619231321691);
 
-} // namespace kletch
+} // namespace jogurt
 
-#endif // KLETCH_MATH_CONSTANTS_H
+#endif // JOGURT_MATH_CONSTANTS_H

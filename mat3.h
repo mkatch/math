@@ -1,11 +1,11 @@
-#ifndef KLETCH_MATH_MAT3_H
-#define KLETCH_MATH_MAT3_H
+#ifndef JOGURT_MATH_MAT3_H
+#define JOGURT_MATH_MAT3_H
 
 #include "prefix.h"
 
 #include "vec2.h"
 
-namespace kletch {
+namespace jogurt {
 
 template <typename T>
 struct mat3
@@ -166,6 +166,6 @@ mat3<T> operator * (const mat3<T>& m1, mat3<T> m2)
     return m2.premul(m1);
 }
 
-} // namespace kletch
+} // namespace jogurt
 
-#endif // KLETCH_MATH_MAT3_H
+#endif // JOGURT_MATH_MAT3_H

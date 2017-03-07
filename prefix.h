@@ -1,18 +1,18 @@
-#ifndef KLETCH_MATH_PREFIX_H
-#define KLETCH_MATH_PREFIX_H
+#ifndef JOGURT_MATH_PREFIX_H
+#define JOGURT_MATH_PREFIX_H
 
 #include "prefix.h"
 #include <cmath>
 #include <limits>
 #include <type_traits>
 
-namespace kletch {
+namespace jogurt {
 
 using std::isnan;
 using std::isinf;
 using std::isnormal;
 
-#ifdef KLETCH_WITH_DOUBLE
+#ifdef JOGURT_WITH_DOUBLE
     typedef double real;
 #else
     typedef float real;
@@ -21,7 +21,7 @@ using std::isnormal;
 template <class T> inline constexpr real rl(T x) { return static_cast<real>(x); }
 template <class Tf, class Td> inline constexpr real rl(Tf xf, Td xd)
 {
-#   ifdef KLETCH_WITH_DOUBLE
+#   ifdef JOGURT_WITH_DOUBLE
         return rl(xd);
 #   else
         return rl(xf);
@@ -43,6 +43,6 @@ T pi() { return static_cast<T>(3.141592653589793238462643383); }
 template <class T> inline constexpr
 T half_pi() { return static_cast<T>(1.570796326794896619231321691); }
 
-} // namespace kletch
+} // namespace jogurt
 
-#endif // KLETCH_MATH_PREFIX_H
+#endif // JOGURT_MATH_PREFIX_H

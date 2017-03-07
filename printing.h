@@ -1,12 +1,12 @@
-#ifndef KLETCH_MATH_PRINTING_H
-#define KLETCH_MATH_PRINTING_H
+#ifndef JOGURT_MATH_PRINTING_H
+#define JOGURT_MATH_PRINTING_H
 
 #include "prefix.h"
 #include "../printing.h"
 
 #include "math.h"
 
-namespace kletch {
+namespace jogurt {
 
 template <class T>
 std::ostream& operator << (std::ostream& out, vec2<T> const& v)
@@ -41,6 +41,6 @@ std::ostream& operator << (std::ostream& out, box2<T> const& box)
     return out << '(' << box.x0 << ", " << box.y0 << ")-(" << box.x1 << ", " << box.y1 << ')';
 }
 
-} // namespace kletch
+} // namespace jogurt
 
-#endif // KLETCH_MATH_PRINT_H
+#endif // JOGURT_MATH_PRINT_H

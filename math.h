@@ -1,5 +1,5 @@
-#ifndef KLETCH_MATH_MATH_H
-#define KLETCH_MATH_MATH_H
+#ifndef JOGURT_MATH_MATH_H
+#define JOGURT_MATH_MATH_H
 
 #include "prefix.h"
 #include "constants.h"
@@ -11,4 +11,4 @@
 #include "box2.h"
 #include "fline2.h"
 
-#endif // KLETCH_MATH_MATH_H
+#endif // JOGURT_MATH_MATH_H

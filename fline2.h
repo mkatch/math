@@ -1,7 +1,7 @@
-#ifndef KLETCH_MATH_FLINE2_H
-#define KLETCH_MATH_FLINE2_H
+#ifndef JOGURT_MATH_FLINE2_H
+#define JOGURT_MATH_FLINE2_H
 
-namespace kletch {
+namespace jogurt {
 
 // Represents a 2D line in Cartesian coordinate system defined as the plot of a function
 // `y = f(x) = a * x + b`.
@@ -21,6 +21,6 @@ typedef fline2<float> fline2f;
 typedef fline2<double> fline2d;
 typedef fline2<real> fline2r;
 
-} // namespace kletch
+} // namespace jogurt
 
-#endif // KLETCH_MATH_FLINE2_H
+#endif // JOGURT_MATH_FLINE2_H

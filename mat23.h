@@ -1,9 +1,9 @@
-#ifndef KLETCH_MATH_MAT23_H
-#define KLETCH_MATH_MAT23_H
+#ifndef JOGURT_MATH_MAT23_H
+#define JOGURT_MATH_MAT23_H
 
 #include "prefix.h"
 
-namespace kletch {
+namespace jogurt {
 
 template <typename T>
 struct mat23
@@ -76,6 +76,6 @@ inline constexpr mat23d eye23d() { return eye23<double>(); }
 typedef mat23<real> mat23r;
 inline constexpr mat23f eye23r() { return eye23<real>(); }
 
-} // namespace kletch
+} // namespace jogurt
 
-#endif // KLETCH_MATH_MAT23_H
+#endif // JOGURT_MATH_MAT23_H

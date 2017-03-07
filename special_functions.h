@@ -1,9 +1,9 @@
-#ifndef KLETCH_MATH_SPECIAL_FUNCTIONS_H
-#define KLETCH_MATH_SPECIAL_FUNCTIONS_H
+#ifndef JOGURT_MATH_SPECIAL_FUNCTIONS_H
+#define JOGURT_MATH_SPECIAL_FUNCTIONS_H
 
 #include "prefix.h"
 
-namespace kletch {
+namespace jogurt {
 
 using std::abs;
 using std::copysign;
@@ -17,7 +17,7 @@ using std::floor;
 
 #undef min
 #undef max
-#ifndef KLETCH_MSVC
+#ifndef JOGURT_MSVC
     inline int abs(int x) { return x >= 0 ? x : -x; }
 #endif
 
@@ -29,6 +29,6 @@ template <class T> inline T clamp(T v0, T v1, T v) { return v <= v0 ? v0 : (v1 <
 template <class T, class S> inline common_t<T, S> min(T const& a, S const& b) { return a<b ? a:b; }
 template <class T, class S> inline common_t<T, S> max(T const& a, S const& b) { return a>b ? a:b; }
 
-} // namespace kletch
+} // namespace jogurt
 
-#endif // KLETCH_MATH_SPECIAL_FUNCTIONS_H
+#endif // JOGURT_MATH_SPECIAL_FUNCTIONS_H
