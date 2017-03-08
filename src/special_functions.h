@@ -17,9 +17,6 @@ using std::floor;
 
 #undef min
 #undef max
-#ifndef JOGURT_MSVC
-    inline int abs(int x) { return x >= 0 ? x : -x; }
-#endif
 
 inline float log(float b, float x) { return log(x) / log(b); }
 template <class T> inline T sgn(T x) { return copysign(T(1), x); }
