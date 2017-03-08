@@ -1,0 +1,19 @@
+language: cpp
+
+compiler:
+  - gcc
+  - clang
+
+install:
+  - mkdir cmake
+  - cd cmake
+  - curl -O https://cmake.org/files/v3.7/cmake-3.7.2-Linux-x86_64.sh
+  - sh cmake-3.7.2-Linux-x86_64.sh --exclude-subdir --skip-license
+  - cd ..
+
+script:
+  - mkdir build
+  - cd build
+  - ../cmake/bin/cmake ../test
+  - make
+  - ./run_tests
