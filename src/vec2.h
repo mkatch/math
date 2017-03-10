@@ -152,13 +152,13 @@ template <class T> inline
 vec2<vec2_float_t<T>> dir(T angle) { return vec2<vec2_float_t<T>>::dir(angle); }
 
 template <class T> inline
-vec2<vec2_float_t<T>> vec2<T>::rotate(vec2<T> const& v, vec2_float_t<T> angle)
+vec2<vec2_float_t<T>> vec2<T>::rotate(vec2<T> const& v, typename vec2<T>::float_t angle)
 {
      return vec2<vec2_float_t<T>>(v).rotate(angle);
 }
 
 template <class T> inline
-vec2<vec2_float_t<T>> vec2<T>::rotate(vec2<T> const& v, vec2_float_t<T> s, vec2_float_t<T> c)
+vec2<vec2_float_t<T>> vec2<T>::rotate(vec2<T> const& v, typename vec2<T>::float_t s, typename vec2<T>::float_t c)
 {
      return vec2<vec2_float_t<T>>(v).rotate(s, c);
 }
