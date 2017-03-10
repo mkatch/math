@@ -1,4 +1,4 @@
-Jogurt Math Toolkit
+Jogurt Math Toolkit [![Build Status](https://travis-ci.org/mkacz91/math.svg?branch=master)](https://travis-ci.org/mkacz91/math)
 ===================
 
 There is probably no other area in numeric algorithm programming that is so opinionated as the
