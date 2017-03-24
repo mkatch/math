@@ -4,6 +4,8 @@
 #include "prefix.h"
 
 #include "vec2.h"
+#include "mat2.h"
+#include "mat23.h"
 
 namespace jogurt {
 

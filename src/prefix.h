@@ -1,7 +1,6 @@
 #ifndef JOGURT_MATH_PREFIX_H
 #define JOGURT_MATH_PREFIX_H
 
-#include "prefix.h"
 #include <cmath>
 #include <limits>
 #include <type_traits>
@@ -27,8 +26,6 @@ template <class Tf, class Td> inline constexpr real rl(Tf xf, Td xd)
         return rl(xf);
 #   endif
 }
-
-using std::swap;
 
 template <class T> inline bool isbroken(T x) { return !isnormal(x); }
 

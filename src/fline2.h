@@ -1,6 +1,8 @@
 #ifndef JOGURT_MATH_FLINE2_H
 #define JOGURT_MATH_FLINE2_H
 
+#include "vec2.h"
+
 namespace jogurt {
 
 // Represents a 2D line in Cartesian coordinate system defined as the plot of a function
